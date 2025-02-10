@@ -1,0 +1,27 @@
+# .github/workflows/build-rpms.yml
+name: Build libavif RPMs
+
+on:
+  workflow_dispatch:  # manual trigger only
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image for rpmbuild
+        run: docker build -t libavif-builder .
+
+      - name: Run rpmbuild inside Docker container
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}/rpmbuild:/root/rpmbuild" \
+            libavif-builder
+
+      - name: Upload RPM artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: libavif-rpms
+          path: rpmbuild/RPMS/
