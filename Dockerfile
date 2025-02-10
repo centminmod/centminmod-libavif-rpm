@@ -4,7 +4,7 @@ ENV TERM=xterm-256color
 ENV container=docker
 
 # Install required build tools and codec dependencies.
-RUN dnf install -y \
+RUN dnf install -y --skip-broken \
       rpm-build \
       rpmdevtools \
       dnf-plugins-core \
