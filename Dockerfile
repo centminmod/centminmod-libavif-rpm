@@ -1,5 +1,7 @@
-# Dockerfile
 FROM almalinux:9
+
+ENV TERM=xterm-256color
+ENV container=docker
 
 # Install required build tools and codec dependencies.
 RUN dnf install -y \
@@ -20,7 +22,7 @@ RUN dnf install -y \
     dnf clean all
 
 # Create the standard rpmbuild directory tree (~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}).
-RUN rpmdev-setuptree
+RUN rpmdev-setuptree && mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS
 
 WORKDIR /root/rpmbuild
 
