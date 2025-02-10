@@ -22,8 +22,16 @@ jobs:
       - name: List files in build context
         run: ls -alh .
 
-      - name: Build Docker image for rpmbuild
-        run: docker build -t libavif-builder .
+      - name: Build Docker image for libavif RPM build
+        id: docker_build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64
+          load: true
+          tags: libavif-builder:latest
+          progress: plain
 
       - name: Run rpmbuild inside Docker container
         run: |
