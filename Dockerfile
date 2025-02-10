@@ -27,7 +27,7 @@ RUN rpmdev-setuptree && mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 WORKDIR /root/rpmbuild
 
 # Copy in your spec file from the repository.
-COPY ./ibavif.spec SPECS/libavif.spec
+COPY ./libavif.spec SPECS/libavif.spec
 
 # Download the libavif tarball from GitHub.
 RUN curl -L "https://github.com/AOMediaCodec/libavif/archive/refs/tags/v1.1.1.tar.gz" \
