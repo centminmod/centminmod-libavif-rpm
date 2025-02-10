@@ -26,12 +26,12 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ${{ github.workspace }}
           file: ./Dockerfile
           platforms: linux/amd64
           load: true
           tags: libavif-builder:latest
-          progress: plain
+          no-cache: true
 
       - name: Run rpmbuild inside Docker container
         run: |
