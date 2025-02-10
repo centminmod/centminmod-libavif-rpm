@@ -1,8 +1,7 @@
-# .github/workflows/build-rpms.yml
 name: Build libavif RPMs
 
 on:
-  workflow_dispatch:  # manual trigger only
+  workflow_dispatch:
 
 jobs:
   build:
