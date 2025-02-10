@@ -21,10 +21,10 @@ RUN dnf install -y \
       svt-av1-devel && \
     dnf clean all
 
+WORKDIR /root/rpmbuild
+
 # Create the standard rpmbuild directory tree (~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}).
 RUN rpmdev-setuptree && mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-
-WORKDIR /root/rpmbuild
 
 # Copy in your spec file from the repository.
 COPY ./libavif.spec SPECS/libavif.spec
