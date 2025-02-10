@@ -4,7 +4,13 @@ ENV TERM=xterm-256color
 ENV container=docker
 
 # Install required build tools and codec dependencies.
-RUN dnf install -y --skip-broken \
+RUN dnf update -y && \
+    dnf install -y epel-release && \
+    dnf config-manager --set-enabled crb && \
+    dnf install -y 'dnf-command(config-manager)' && \
+    dnf config-manager --set-enabled epel && \
+    dnf -y groupinstall "Development tools" && \
+    dnf install -y --skip-broken \
       rpm-build \
       rpmdevtools \
       dnf-plugins-core \
