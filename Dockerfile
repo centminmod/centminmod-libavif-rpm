@@ -22,7 +22,7 @@ RUN dnf install -y \
     dnf clean all
 
 # Create the standard rpmbuild directory tree (~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}).
-RUN rpmdev-setuptree && mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS
+RUN rpmdev-setuptree && mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 
 WORKDIR /root/rpmbuild
 
