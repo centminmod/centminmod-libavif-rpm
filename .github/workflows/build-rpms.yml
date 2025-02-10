@@ -10,8 +10,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: List repository files
+        run: find . -type f
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+
+      - name: Print .dockerignore
+        run: cat .dockerignore || echo ".dockerignore not found"
 
       - name: Build Docker image for rpmbuild
         run: docker build -t libavif-builder .
